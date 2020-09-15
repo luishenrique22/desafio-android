@@ -26,7 +26,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-
     }
     dependencies {
         classpath(Libs.com_android_tools_build_gradle)
@@ -44,16 +43,18 @@ allprojects {
         maven {
             url = uri("https://plugins.gradle.org/m2/")
         }
-
     }
 }
 plugins {
     id("de.fayard.buildSrcVersions") version "0.6.1"
     id("org.jlleitschuh.gradle.ktlint") version "9.0.0"
-
 }
-tasks.register("clean",Delete::class){
+tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
 
 apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+}

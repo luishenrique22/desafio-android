@@ -28,4 +28,9 @@ object AppConfiguration {
             defaultProguardRules = "proguard-rules.pro"
         )
     }
+
+    object Task {
+        const val preBuild = "preBuild"
+        const val ktlintCheck = "ktlintCheck"
+    }
 }

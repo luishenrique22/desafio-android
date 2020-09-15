@@ -37,6 +37,9 @@ android {
     kotlinOptions.apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    getTasksByName(AppConfiguration.Task.preBuild, true).firstOrNull()
+        ?.dependsOn(getTasksByName(AppConfiguration.Task.ktlintCheck, true))
 }
 
 dependencies {
@@ -78,5 +81,4 @@ dependencies {
         androidTestImplementation(espresso_core)
         androidTestImplementation(androidx_test_core_ktx)
     }
-
 }
