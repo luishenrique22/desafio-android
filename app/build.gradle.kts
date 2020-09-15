@@ -1,23 +1,23 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
-    kotlin("android.extensions")
-    kotlin("kapt")
+    id(AppConfiguration.Plugins.androidApplication)
+    kotlin(AppConfiguration.Plugins.kotlinAndroid)
+    kotlin(AppConfiguration.Plugins.kotlinAndroidExtensions)
+    kotlin(AppConfiguration.Plugins.kapt)
 }
 
 android {
 
-    compileSdkVersion(29)
+    compileSdkVersion(AppConfiguration.compileSdkVersion)
     defaultConfig {
-        applicationId = "com.picpay.desafio.android"
-        minSdkVersion(21)
-        targetSdkVersion(29)
-        versionCode= 1
-        versionName = "1.0"
+        applicationId = AppConfiguration.applicationId
+        minSdkVersion(AppConfiguration.minSdkVersion)
+        targetSdkVersion(AppConfiguration.targetSdkVersion)
+        versionCode= AppConfiguration.versionCode
+        versionName = AppConfiguration.versionName
 
         vectorDrawables.useSupportLibrary = true
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfiguration.testInstrumentationRunner
     }
     buildTypes {
 
