@@ -37,50 +37,43 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    Libs.run {
+        implementation(kotlin_stdlib_jdk7)
+        implementation(androidx_core_core_ktx)
+        implementation(appcompat)
+        implementation(constraintlayout)
+        implementation(material)
+        implementation(koin_android)
+        implementation(koin_core)
+        implementation(koin_androidx_viewmodel)
+        implementation(dagger)
+        kapt(dagger_compiler)
+        implementation(lifecycle_livedata_ktx)
+        implementation(lifecycle_runtime_ktx)
+        implementation(lifecycle_viewmodel_ktx)
+        implementation(kotlinx_coroutines_core)
+        implementation(kotlinx_coroutines_android)
+        implementation(rxjava)
+        implementation(rxandroid)
+        implementation(adapter_rxjava2)
+        implementation(gson)
+        implementation(retrofit)
+        implementation(converter_gson)
+        implementation(okhttp)
+        implementation(mockwebserver)
+        implementation(picasso)
+        implementation(circleimageview)
 
-    implementation("androidx.core:core-ktx:1.3.1")
+        testImplementation(kotlinx_coroutines_test)
+        testImplementation(junit)
+        testImplementation(mockito_core)
+        testImplementation(mockito_kotlin)
+        testImplementation(core_testing)
+        testImplementation(koin_test)
 
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+        androidTestImplementation(androidx_test_runner)
+        androidTestImplementation(espresso_core)
+        androidTestImplementation(androidx_test_core_ktx)
+    }
 
-    implementation("com.google.android.material:material:1.2.1")
-
-    implementation("org.koin:koin-core:2.0.1")
-    implementation("org.koin:koin-android:2.0.1")
-    implementation("org.koin:koin-androidx-viewmodel:2.0.1")
-
-    implementation("com.google.dagger:dagger:2.23.2")
-    kapt("com.google.dagger:dagger-compiler:2.23.2")
-
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.2.0")
-
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3")
-
-    implementation("io.reactivex.rxjava2:rxjava:2.2.17")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-
-    implementation("com.google.code.gson:gson:2.8.6")
-
-    implementation("com.squareup.retrofit2:retrofit:2.7.1")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.7.1")
-    implementation("com.squareup.retrofit2:converter-gson:2.7.1")
-    implementation("com.squareup.okhttp3:okhttp:4.3.1")
-    implementation("com.squareup.okhttp3:mockwebserver:4.3.1")
-
-    implementation("com.squareup.picasso:picasso:2.71828")
-    implementation("de.hdodenhof:circleimageview:3.0.0")
-    testImplementation("junit:junit:4.12")
-    testImplementation("org.mockito:mockito-core:2.27.0")
-    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0")
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
-    implementation("org.koin:koin-test:2.0.1")
-
-    androidTestImplementation("androidx.test:runner:1.3.0")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
-    androidTestImplementation("androidx.test:core-ktx:1.3.0")
 }
