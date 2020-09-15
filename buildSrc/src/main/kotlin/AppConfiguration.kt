@@ -14,4 +14,18 @@ object AppConfiguration {
     const val versionCode = 1
     const val versionName = "1.0"
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    sealed class BuildType(
+        val name: String,
+        val isMinifyEnabled: Boolean = false,
+        val defaultProguardFile: String = "",
+        val defaultProguardRules: String = ""
+    ) {
+        object Release : BuildType(
+            name = "release",
+            isMinifyEnabled = true,
+            defaultProguardFile = "proguard-android-optimize.txt",
+            defaultProguardRules = "proguard-rules.pro"
+        )
+    }
 }

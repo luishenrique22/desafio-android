@@ -12,7 +12,7 @@ android {
         applicationId = AppConfiguration.applicationId
         minSdkVersion(AppConfiguration.minSdkVersion)
         targetSdkVersion(AppConfiguration.targetSdkVersion)
-        versionCode= AppConfiguration.versionCode
+        versionCode = AppConfiguration.versionCode
         versionName = AppConfiguration.versionName
 
         vectorDrawables.useSupportLibrary = true
@@ -21,9 +21,12 @@ android {
     }
     buildTypes {
 
-        getByName("release") {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        getByName(AppConfiguration.BuildType.Release.name) {
+            isMinifyEnabled = AppConfiguration.BuildType.Release.isMinifyEnabled
+            proguardFiles(
+                getDefaultProguardFile(AppConfiguration.BuildType.Release.defaultProguardFile),
+                AppConfiguration.BuildType.Release.defaultProguardRules
+            )
         }
     }
     compileOptions {
@@ -31,7 +34,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions.apply{
+    kotlinOptions.apply {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
