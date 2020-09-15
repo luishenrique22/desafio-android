@@ -7,6 +7,10 @@ import kotlin.String
  *   `$ ./gradlew buildSrcVersions`
  */
 object Libs {
+    const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String =
+            "org.jlleitschuh.gradle.ktlint:org.jlleitschuh.gradle.ktlint.gradle.plugin:" +
+            Versions.org_jlleitschuh_gradle_ktlint_gradle_plugin
+
     const val de_fayard_buildsrcversions_gradle_plugin: String =
             "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
             Versions.de_fayard_buildsrcversions_gradle_plugin
@@ -161,6 +165,9 @@ object Libs {
     const val espresso_core: String = "androidx.test.espresso:espresso-core:" +
             Versions.espresso_core
 
+    const val ktlint_gradle: String = "org.jlleitschuh.gradle:ktlint-gradle:" +
+            Versions.ktlint_gradle
+
     /**
      * https://developer.android.com/topic/libraries/architecture/index.html
      */
@@ -204,6 +211,11 @@ object Libs {
      * https://github.com/square/picasso/
      */
     const val picasso: String = "com.squareup.picasso:picasso:" + Versions.picasso
+
+    /**
+     * https://github.com/pinterest/ktlint
+     */
+    const val ktlint: String = "com.pinterest:ktlint:" + Versions.ktlint
 
     /**
      * https://github.com/ReactiveX/RxJava
