@@ -22,7 +22,10 @@ allprojects {
 
     }
 }
+plugins {
+    id("de.fayard.buildSrcVersions") version "0.6.1"
 
+}
 tasks.register("clean",Delete::class){
     delete(rootProject.buildDir)
 }
