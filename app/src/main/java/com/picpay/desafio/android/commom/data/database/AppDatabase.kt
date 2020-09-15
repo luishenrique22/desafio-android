@@ -3,10 +3,10 @@ package com.picpay.desafio.android.commom.data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.picpay.desafio.android.feature.user.data.datasource.local.UserLocalDao
-import com.picpay.desafio.android.feature.user.data.model.UserLocalData
+import com.picpay.desafio.android.feature.user.data.model.UserData
 
 @Database(
-    entities = [UserLocalData::class],
+    entities = [UserData::class],
     version = AppDatabase.databaseVersion,
     exportSchema = false
 )

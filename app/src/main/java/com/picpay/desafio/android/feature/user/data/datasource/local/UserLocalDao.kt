@@ -5,17 +5,17 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.picpay.desafio.android.feature.user.data.model.UserLocalData
+import com.picpay.desafio.android.feature.user.data.model.UserData
 
 @Dao
 interface UserLocalDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(user: UserLocalData)
+    fun insert(user: UserData)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(users: List<UserLocalData>)
+    fun insertAll(users: List<UserData>)
 
-    @Query("SELECT * FROM UserLocalData")
-    fun getUsers(): LiveData<List<UserLocalData>>
+    @Query("SELECT * FROM UserlData")
+    fun getUsers(): LiveData<List<UserData>>
 }

@@ -4,7 +4,7 @@ import androidx.room.Entity
 
 
 @Entity(primaryKeys = ["id", "userName"])
-data class UserLocalData(
+data class UserData(
     val id: Int,
     val image: String,
     val name: String,
