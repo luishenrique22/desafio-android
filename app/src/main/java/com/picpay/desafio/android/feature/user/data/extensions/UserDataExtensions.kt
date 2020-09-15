@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.feature.user.data
+package com.picpay.desafio.android.feature.user.data.extensions
 
 import com.picpay.desafio.android.feature.user.data.model.UserLocalData
 import com.picpay.desafio.android.feature.user.data.model.UserPayload
