@@ -1,7 +1,9 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.feature.user.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.picpay.desafio.android.R
+import com.picpay.desafio.android.feature.user.data.model.UserPayload
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_user.view.*
@@ -10,12 +12,12 @@ class UserListItemViewHolder(
     itemView: View
 ) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(user: User) {
-        itemView.name.text = user.name
-        itemView.username.text = user.username
+    fun bind(userPayload: UserPayload) {
+        itemView.name.text = userPayload.name
+        itemView.username.text = userPayload.username
         itemView.progressBar.visibility = View.VISIBLE
         Picasso.get()
-            .load(user.img)
+            .load(userPayload.img)
             .error(R.drawable.ic_round_account_circle)
             .into(itemView.picture, object : Callback {
                 override fun onSuccess() {

@@ -69,6 +69,8 @@ dependencies {
         implementation(mockwebserver)
         implementation(picasso)
         implementation(circleimageview)
+        implementation("androidx.room:room-runtime:2.2.5")
+        kapt("androidx.room:room-ktx:2.2.5")
 
         testImplementation(kotlinx_coroutines_test)
         testImplementation(junit)

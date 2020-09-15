@@ -1,4 +1,4 @@
-package com.picpay.desafio.android
+package com.picpay.desafio.android.feature.user.ui.activity
 
 import android.view.View
 import android.widget.ProgressBar
@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.picpay.desafio.android.feature.user.data.datasource.remote.PicPayService
+import com.picpay.desafio.android.R
+import com.picpay.desafio.android.feature.user.data.model.UserPayload
+import com.picpay.desafio.android.feature.user.ui.adapter.UserListAdapter
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,14 +52,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         recyclerView = findViewById(R.id.recyclerView)
         progressBar = findViewById(R.id.user_list_progress_bar)
 
-        adapter = UserListAdapter()
+        adapter =
+            UserListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         progressBar.visibility = View.VISIBLE
         service.getUsers()
-            .enqueue(object : Callback<List<User>> {
-                override fun onFailure(call: Call<List<User>>, t: Throwable) {
+            .enqueue(object : Callback<List<UserPayload>> {
+                override fun onFailure(call: Call<List<UserPayload>>, t: Throwable) {
                     val message = getString(R.string.error)
 
                     progressBar.visibility = View.GONE
@@ -65,7 +70,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                         .show()
                 }
 
-                override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                override fun onResponse(call: Call<List<UserPayload>>, response: Response<List<UserPayload>>) {
                     progressBar.visibility = View.GONE
 
                     adapter.users = response.body()!!
