@@ -1,5 +1,9 @@
 package com.picpay.desafio.android.feature.user.ui.activity
 
+import android.content.Context
+import android.os.Bundle
+import android.os.PersistableBundle
+import android.util.AttributeSet
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -11,8 +15,10 @@ import com.google.gson.GsonBuilder
 import com.picpay.desafio.android.feature.user.data.datasource.remote.PicPayService
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.feature.user.data.model.UserPayload
+import com.picpay.desafio.android.feature.user.ui.UsersViewModel
 import com.picpay.desafio.android.feature.user.ui.adapter.UserListAdapter
 import okhttp3.OkHttpClient
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,25 +31,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var progressBar: ProgressBar
     private lateinit var adapter: UserListAdapter
 
-    private val url = "http://careers.picpay.com/tests/mobdev/"
+    private val viewModel by viewModel<UsersViewModel>()
 
-    private val gson: Gson by lazy { GsonBuilder().create() }
-
-    private val okHttp: OkHttpClient by lazy {
-        OkHttpClient.Builder()
-            .build()
-    }
-
-    private val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(url)
-            .client(okHttp)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-    }
-
-    private val service: PicPayService by lazy {
-        retrofit.create(PicPayService::class.java)
+    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+        return super.onCreateView(name, context, attrs)
     }
 
     override fun onResume() {
@@ -70,7 +61,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                         .show()
                 }
 
-                override fun onResponse(call: Call<List<UserPayload>>, response: Response<List<UserPayload>>) {
+                override fun onResponse(
+                    call: Call<List<UserPayload>>,
+                    response: Response<List<UserPayload>>
+                ) {
                     progressBar.visibility = View.GONE
 
                     adapter.users = response.body()!!

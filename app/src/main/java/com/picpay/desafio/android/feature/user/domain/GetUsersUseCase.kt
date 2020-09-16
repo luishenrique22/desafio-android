@@ -8,9 +8,10 @@ import com.picpay.desafio.android.feature.user.domain.repository.GetUsersReposit
 
 
 class GetUsersUseCase(private val repository: GetUsersRepository):
-    UseCase<Nothing, LiveData<State<List<UserData>>>>() {
-    override fun execute(params: Nothing): LiveData<State<List<UserData>>> {
+    UseCase<GetUserParam, LiveData<State<List<UserData>>>>() {
+    override fun execute(params: GetUserParam): LiveData<State<List<UserData>>> {
        return repository.getUsers()
     }
 
 }
+class GetUserParam
