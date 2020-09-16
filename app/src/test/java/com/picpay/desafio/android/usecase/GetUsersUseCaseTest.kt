@@ -25,12 +25,6 @@ class GetUsersUseCaseTest {
     @Mock
     private lateinit var getUsersRepository: GetUsersRepository
 
-    @Mock
-    private lateinit var localDao: UserLocalDao
-
-    @Mock
-    lateinit var service: PicPayService
-
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)

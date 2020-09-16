@@ -77,14 +77,16 @@ dependencies {
         implementation("androidx.room:room-runtime:2.2.5")
         implementation("androidx.room:room-compiler:2.2.5")
         kapt("androidx.room:room-ktx:2.2.5")
+        testImplementation("io.mockk:mockk:1.10.0")
 
         testImplementation(kotlinx_coroutines_test)
         testImplementation(junit)
         testImplementation(mockito_core)
         testImplementation(mockito_kotlin)
-        androidTestImplementation(core_testing)
         testImplementation(koin_test)
+        testImplementation(core_testing)
 
+        androidTestImplementation(core_testing)
         androidTestImplementation(androidx_test_runner)
         androidTestImplementation(espresso_core)
         androidTestImplementation(androidx_test_core_ktx)
