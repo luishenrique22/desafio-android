@@ -41,6 +41,10 @@ android {
 
     getTasksByName(AppConfiguration.Task.preBuild, true).firstOrNull()
         ?.dependsOn(getTasksByName(AppConfiguration.Task.ktlintCheck, true))
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -78,7 +82,7 @@ dependencies {
         testImplementation(junit)
         testImplementation(mockito_core)
         testImplementation(mockito_kotlin)
-        testImplementation(core_testing)
+        androidTestImplementation(core_testing)
         testImplementation(koin_test)
 
         androidTestImplementation(androidx_test_runner)
