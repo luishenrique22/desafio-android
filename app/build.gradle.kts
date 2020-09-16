@@ -85,6 +85,7 @@ dependencies {
         testImplementation(mockito_kotlin)
         testImplementation(koin_test)
         testImplementation(core_testing)
+        testImplementation(espresso_core)
 
         androidTestImplementation(core_testing)
         androidTestImplementation(androidx_test_runner)

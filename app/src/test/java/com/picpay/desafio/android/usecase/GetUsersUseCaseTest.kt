@@ -5,8 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.picpay.desafio.android.commom.data.model.Error
 import com.picpay.desafio.android.commom.data.model.State
-import com.picpay.desafio.android.feature.user.data.datasource.local.UserLocalDao
-import com.picpay.desafio.android.feature.user.data.datasource.remote.PicPayService
 import com.picpay.desafio.android.feature.user.data.model.UserData
 import com.picpay.desafio.android.feature.user.domain.GetUserParam
 import com.picpay.desafio.android.feature.user.domain.GetUsersUseCase
