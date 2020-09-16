@@ -20,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity(), MainActivityInteractor.View {
 
     private val adapter: UserListAdapter by lazy {
-        UserListAdapter()
+        UserListAdapter(lifecycle)
     }
 
     private val viewModel by viewModel<UsersViewModel>()

@@ -2,12 +2,13 @@ package com.picpay.desafio.android.feature.user.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.feature.user.domain.model.UserModel
 
-class UserListAdapter : RecyclerView.Adapter<UserListItemViewHolder>() {
+class UserListAdapter(private val lifecycleOwner: Lifecycle) : RecyclerView.Adapter<UserListItemViewHolder>() {
 
     var users = emptyList<UserModel>()
         set(value) {
@@ -31,7 +32,7 @@ class UserListAdapter : RecyclerView.Adapter<UserListItemViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: UserListItemViewHolder, position: Int) {
-        holder.bind(users[position])
+        holder.bind(users[position], lifecycleOwner)
     }
 
     override fun getItemCount(): Int = users.size
