@@ -1,7 +1,6 @@
 package com.picpay.desafio.android.feature.user.ui.activity
 
-import android.content.Context
-import android.util.AttributeSet
+import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,20 +9,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.commom.data.model.State
 import com.picpay.desafio.android.feature.user.data.model.UserData
-import com.picpay.desafio.android.feature.user.data.model.UserPayload
 import com.picpay.desafio.android.feature.user.domain.extensions.mapToUserModel
 import com.picpay.desafio.android.feature.user.domain.model.UserModel
 import com.picpay.desafio.android.feature.user.ui.MainActivityInteractor
 import com.picpay.desafio.android.feature.user.ui.UsersViewModel
 import com.picpay.desafio.android.feature.user.ui.adapter.UserListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.list_item_user.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MainActivity : AppCompatActivity(R.layout.activity_main), MainActivityInteractor.View {
+class MainActivity : AppCompatActivity(), MainActivityInteractor.View {
 
     private val adapter: UserListAdapter by lazy {
         UserListAdapter()
@@ -31,11 +25,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MainActivityInte
 
     private val viewModel by viewModel<UsersViewModel>()
 
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         configureView()
         observeResults()
-        return super.onCreateView(name, context, attrs)
     }
+
 
     override fun configureView() {
         recyclerView.adapter = adapter
@@ -64,21 +60,24 @@ class MainActivity : AppCompatActivity(R.layout.activity_main), MainActivityInte
     }
 
     override fun handleError(result: State.Failure<List<UserData>>) {
-        showError()
+        result.data?.let {
+            showData(it.map { item -> item.mapToUserModel() })
+        } ?: showError()
     }
 
     override fun showLoading() {
-        progressBar.visibility = View.VISIBLE
+        user_list_progress_bar.visibility = View.VISIBLE
         recyclerView.visibility = View.GONE
     }
 
     override fun showData(users: List<UserModel>) {
-        progressBar.visibility = View.GONE
+        user_list_progress_bar.visibility = View.GONE
+        recyclerView.visibility = View.VISIBLE
         adapter.users = users
     }
 
     override fun showError() {
-        progressBar.visibility = View.GONE
+        user_list_progress_bar.visibility = View.GONE
         recyclerView.visibility = View.GONE
         Toast.makeText(this@MainActivity, getString(R.string.error), Toast.LENGTH_SHORT)
             .show()

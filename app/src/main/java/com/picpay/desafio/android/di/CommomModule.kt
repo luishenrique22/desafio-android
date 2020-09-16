@@ -16,7 +16,7 @@ object CommomModule {
 
     val databaseModule = module {
         single {
-            Room.databaseBuilder(androidApplication(), AppDatabase::class.java, dataBaseName)
+           return@single Room.databaseBuilder(androidApplication(), AppDatabase::class.java, dataBaseName)
                 .build()
         }
     }

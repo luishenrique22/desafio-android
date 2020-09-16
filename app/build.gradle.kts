@@ -3,6 +3,7 @@ plugins {
     kotlin(AppConfiguration.Plugins.kotlinAndroid)
     kotlin(AppConfiguration.Plugins.kotlinAndroidExtensions)
     kotlin(AppConfiguration.Plugins.kapt)
+    id(AppConfiguration.Plugins.kotlinKapt)
 }
 
 android {
@@ -70,6 +71,7 @@ dependencies {
         implementation(picasso)
         implementation(circleimageview)
         implementation("androidx.room:room-runtime:2.2.5")
+        implementation("androidx.room:room-compiler:2.2.5")
         kapt("androidx.room:room-ktx:2.2.5")
 
         testImplementation(kotlinx_coroutines_test)

@@ -16,6 +16,6 @@ interface UserLocalDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(users: List<UserData>)
 
-    @Query("SELECT * FROM UserlData")
+    @Query("SELECT * FROM UserData")
     fun getUsers(): LiveData<List<UserData>>
 }

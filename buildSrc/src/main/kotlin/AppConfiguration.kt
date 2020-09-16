@@ -5,6 +5,7 @@ object AppConfiguration {
         const val kotlinAndroid = "android"
         const val kotlinAndroidExtensions = "android.extensions"
         const val kapt = "kapt"
+        const val kotlinKapt = "kotlin-kapt"
     }
 
     const val compileSdkVersion = 29
