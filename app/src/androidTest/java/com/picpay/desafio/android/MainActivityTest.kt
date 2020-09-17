@@ -13,6 +13,7 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
 import org.junit.Test
+import org.mockito.AdditionalMatchers.not
 
 
 class MainActivityTest {
@@ -68,4 +69,5 @@ class MainActivityTest {
 
         private val errorResponse by lazy { MockResponse().setResponseCode(404) }
     }
+
 }
